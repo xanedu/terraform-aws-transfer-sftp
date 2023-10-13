@@ -68,7 +68,12 @@ resource "aws_transfer_user" "default" {
           entry = "/"
           # Specifically do not use $${Transfer:UserName} since subsequent terraform plan/applies will try to revert
           # the value back to $${Tranfer:*} value
-          target = format("/%s/%s", lookup(each.value, "s3_bucket_name", var.s3_bucket_name), each.value.user_name)
+          target = format("/%s", 
+          join("/", [
+            lookup(each.value, "s3_bucket_name", var.s3_bucket_name), 
+            var.home_root,
+            each.value.user_name
+          ]))
         }
       ]
     ) : toset([])

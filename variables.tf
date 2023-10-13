@@ -16,6 +16,12 @@ variable "restricted_home" {
   default     = true
 }
 
+variable "home_root" {
+  type = string
+  description = "The root path in the bucket to store restricted user home directories within"
+  default = null
+}
+
 variable "force_destroy" {
   type        = bool
   description = "Forces the AWS Transfer Server to be destroyed"
