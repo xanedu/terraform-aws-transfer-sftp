@@ -87,3 +87,9 @@ variable "eip_enabled" {
   description = "Whether to provision and attach an Elastic IP to be used as the SFTP endpoint. An EIP will be provisioned per subnet."
   default     = false
 }
+
+variable "kms_key_arn" {
+  type = string
+  description = "The ARN of the KMS key used for bucket encryption"
+  default = ""
+}
