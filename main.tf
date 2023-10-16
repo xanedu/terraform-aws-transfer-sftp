@@ -194,25 +194,13 @@ data "aws_iam_policy_document" "s3_access_for_sftp_users" {
 
     actions = [
       "kms:Decrypt",
-		"kms:Encrypt",
-		"kms:GenerateDataKey"
+		  "kms:Encrypt",
+		  "kms:GenerateDataKey"
     ]
     resources = [
       var.var.kms_key_arn
     ]
   }
-
-
-  {
-	"Sid": "Stmt1544140969635",
-	"Action": [
-		"kms:Decrypt",
-		"kms:Encrypt",
-		"kms:GenerateDataKey"
-	],
-	"Effect": "Allow",
-	"Resource": "arn:aws:kms:region:account-id:key/kms-key-id"
-}
 }
 
 data "aws_iam_policy_document" "logging" {
