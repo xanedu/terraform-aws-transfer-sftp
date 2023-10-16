@@ -152,7 +152,8 @@ data "aws_iam_policy_document" "s3_access_for_sftp_users" {
     effect = "Allow"
 
     actions = [
-      "s3:ListBucket"
+      "s3:ListBucket",
+      "s3:GetBucketLocation"
     ]
 
     resources = [
