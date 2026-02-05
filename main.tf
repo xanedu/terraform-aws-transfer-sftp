@@ -1,7 +1,8 @@
 locals {
   enabled = module.this.enabled
 
-  s3_arn_prefix = "arn:${one(data.aws_partition.default[*].partition)}:s3:::"
+  #s3_arn_prefix = "arn:${one(data.aws_partition.default[*].partition)}:s3:::"
+  s3_arn_prefix = local.enabled ? "arn:${one(data.aws_partition.default[*].partition)}:s3:::" : "arn:aws:s3:::"
 
   is_vpc = var.vpc_id != null
 
